@@ -11,11 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get( '/',  [ 'uses' => 'MainController@index' ] );
+
 
 Route::get('/tree', function() { return view('tree');});
+
+Route::get('auth/logout', [ 'uses' => 'Auth\AuthController@logout' ]);
+Route::get('auth/settings', [ 'uses' => 'Auth\AuthController@settings' ]);
+Route::get('auth/tree', [ 'uses' => 'Auth\AuthController@tree' ]);
 
 /*
 |--------------------------------------------------------------------------

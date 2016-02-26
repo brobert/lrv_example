@@ -4,3 +4,7 @@
 Homestead.yaml
 Homestead.json
 .env
+.buildpath
+.project
+org.eclipse.php.core.prefs
+org.eclipse.wst.common.project.facet.core.xml
