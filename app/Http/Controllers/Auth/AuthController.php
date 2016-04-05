@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
+use Illuminate\Support\Facades\Input as Input;
 
 class AuthController extends Controller
 {
@@ -41,9 +44,22 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    public function login() {}
+    public function login() {
+
+        $email      = Input::get( 'email' );
+        $password   = Input::get( 'password' );
+
+        if ( Auth::attempt( [ 'email' => $email, 'password' => $password ] ) ) {
+            return redirect()->action('HomeController@index')->with('message_error', trans( 'auth.ok' ) );
+
+
+        }
+        return redirect()->action('Auth\AuthController@showLoginForm')->with('message_success', trans( 'auth.failed' ));
+
+    }
 
     public function logout() {
+        Auth::logout();
         return redirect( $this->redirectTo );
     }
 
