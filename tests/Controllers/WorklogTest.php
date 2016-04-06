@@ -36,4 +36,18 @@ class WorklogTest extends TestCase
         $this->assertResponseStatus(200);
 
     }
+
+    public function testCreateUser() {
+
+        $this->flushSession();
+
+        $res = $this->call('POST', '/register', [
+            'name' => 'Jan Nowak',
+            'email' => 'jn@o2.pl',
+            'password' => 'passwd',
+            'password_confirmation' => 'passwd'
+        ]);
+
+        echo $res->getContent();
+    }
 }
