@@ -8,7 +8,11 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    You are logged in!!!!
+                    <pre>
+                        {{  print_r( $user, true ) }}
+                    </pre>
+
                 </div>
             </div>
         </div>
