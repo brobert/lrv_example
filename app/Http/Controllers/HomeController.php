@@ -16,6 +16,8 @@ class HomeController extends Controller {
     * @return void
     */
     public function __construct() {
+
+        parent::__construct();
         $this->middleware('auth');
     }
 
@@ -25,7 +27,7 @@ class HomeController extends Controller {
     * @return \Illuminate\Http\Response
     */
     public function index() {
-        $this->set_data( 'user', User::all() );
+        $this->set_data( 'users', User::all() );
         $this->set_view('home');
         return $this->render('home');
     }
