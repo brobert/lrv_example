@@ -83,7 +83,7 @@ class Controller extends BaseController
         }
 
         if ( ! view()->exists( $view_path ) ) {
-            throw new ModelNotFoundException();
+            throw new \InvalidArgumentException('View not found');
         }
         $this->view = $view_path;
     }
