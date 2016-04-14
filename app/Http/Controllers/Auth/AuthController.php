@@ -38,12 +38,22 @@ class AuthController extends Controller
      *
      * @return void
      */
+    /**
+     * AuthController::__construct()
+     *
+     * @return
+     */
     public function __construct()
     {
         $this->base = 'auth';
         $this->middleware('guest', ['except' => 'logout']);
     }
 
+    /**
+     * AuthController::login()
+     *
+     * @return
+     */
     public function login() {
 
         $email      = Input::get( 'email' );
@@ -58,21 +68,44 @@ class AuthController extends Controller
 
     }
 
+
+    /**
+     * AuthController::logout()
+     *
+     * @return
+     */
     public function logout() {
         Auth::logout();
         return redirect( $this->redirectTo );
     }
 
+    /**
+     * AuthController::settings()
+     *
+     * @return
+     */
     public function settings() {
         $this->set_view('settings');
         return $this->render();
     }
 
-    public function tree()
-    {
+
+    /**
+     * AuthController::tree()
+     *
+     * @return
+     */
+    public function tree() {
         return $this->_make_tree(10, 3);
     }
 
+    /**
+     * AuthController::_make_tree()
+     *
+     * @param mixed $max_items
+     * @param mixed $deep
+     * @return
+     */
     private function _make_tree( $max_items, $deep) {
 
         $items_count = \rand(3, $max_items);
@@ -95,6 +128,12 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    /**
+     * AuthController::validator()
+     *
+     * @param mixed $data
+     * @return
+     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -109,6 +148,12 @@ class AuthController extends Controller
      *
      * @param  array  $data
      * @return User
+     */
+    /**
+     * AuthController::create()
+     *
+     * @param mixed $data
+     * @return
      */
     protected function create(array $data)
     {

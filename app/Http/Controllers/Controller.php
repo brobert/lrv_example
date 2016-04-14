@@ -7,6 +7,8 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
+use Auth;
+
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Controller extends BaseController
@@ -42,6 +44,14 @@ class Controller extends BaseController
      * @var unknown
      */
     protected $base = false;
+
+
+    public function __construct() {
+
+//         parent::__construct();
+
+        $this->set_data('user', Auth::user() );
+    }
 
 
     /**

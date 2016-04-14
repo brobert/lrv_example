@@ -70,7 +70,7 @@
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                             <span class="meta">
                                 <span class="avatar"><img src="/image/avatar/avatar7.jpg" class="img-circle" alt="" /></span>
-                                <span class="text hidden-xs hidden-sm pl5">{{ $user_name or 'Guest' }}</span>
+                                <span class="text hidden-xs hidden-sm pl5">{{ $user->name or 'Guest' }}</span>
                             </span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
@@ -78,7 +78,7 @@
                             <li><a href="javascript:void(0);"><span class="icon"><i class="ico-cog4"></i></span> Profile Setting</a></li>
                             <li><a href="javascript:void(0);"><span class="icon"><i class="ico-question"></i></span> Help</a></li>
                             <li class="divider"></li>
-                            <li><a href="/auth/logout"><span class="icon"><i class="ico-exit"></i></span>{{ trans('auth.sign_out') }}</a></li>
+                            <li><a href="/logout"><span class="icon"><i class="ico-exit"></i></span>{{ trans('auth.sign_out') }}</a></li>
                         </ul>
                     </li>
                     <!-- Profile dropdown -->
