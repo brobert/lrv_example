@@ -115,18 +115,16 @@
                 <!-- Page Header -->
                 <div class="page-header page-header-block">
                     <div class="page-header-section">
-                        <h4 class="title semibold">{{ $main_title or ''}}</h4>
-                    </div>
-                    <div class="page-header-section">
                         <!-- Toolbar -->
                         <div class="toolbar">
-                            <ol class="breadcrumb breadcrumb-transparent nm">
-                                <li><a href="#">Wydarzenia</a></li>
-                                <li class="active">Starter</li>
-                            </ol>
+                            @include('layouts._landefv2_breadcrumb')
                         </div>
                         <!--/ Toolbar -->
                     </div>
+                    <div class="page-header-section">
+                        <h4 class="title semibold">{{ $main_title or 'Page Title'}}</h4>
+                    </div>
+
                 </div>
                 <!-- Page Header -->
 
