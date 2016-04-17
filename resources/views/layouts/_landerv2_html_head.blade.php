@@ -19,7 +19,7 @@
         <!--/ Plugins stylesheet : optional -->
 
         <!-- Application stylesheet : mandatory -->
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/bootstrap.css">
         <link rel="stylesheet" href="/css/layout.css">
         <link rel="stylesheet" href="/css/uielement.css">
         <link rel="stylesheet" href="/css/custom.css">

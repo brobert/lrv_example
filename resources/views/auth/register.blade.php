@@ -24,6 +24,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('surName') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">{{ trans( 'auth.register.fields.surName' ) }}</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="surName" value="{{ old('surName') }}">
+
+                                @if ($errors->has('surName'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('surName') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">{{ trans( 'auth.register.fields.email' ) }}</label>
 
