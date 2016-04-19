@@ -19,18 +19,18 @@
         <!--/ Plugins stylesheet : optional -->
 
         <!-- Application stylesheet : mandatory -->
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/layout.css">
-        <link rel="stylesheet" href="/css/uielement.css">
-        <link rel="stylesheet" href="/css/custom.css">
+        <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/layout.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/uielement.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">
         <!--/ Application stylesheet -->
 
         <!-- Theme stylesheet -->
-        <link rel="stylesheet" href="/css/themes/theme.css">
+        <link rel="stylesheet" href="{{ asset('/css/themes/theme.css') }}">
         <!--/ Theme stylesheet -->
 
         <!-- modernizr script -->
-        <script type="text/javascript" src="/plugins/modernizr/js/modernizr.js"></script>
+        <script type="text/javascript" src="{{ asset('/plugins/modernizr/js/modernizr.js') }}"></script>
         <!--/ modernizr script -->
         <!-- END STYLESHEETS -->
     </head>

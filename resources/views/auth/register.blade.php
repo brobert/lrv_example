@@ -24,7 +24,6 @@
                             </div>
                         </div>
 
-
                         <div class="form-group{{ $errors->has('secondName') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">{{ trans( 'auth.register.fields.secondName' ) }}</label>
 
@@ -38,6 +37,7 @@
                                 @endif
                             </div>
                         </div>
+
 
                         <div class="form-group{{ $errors->has('surName') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">{{ trans( 'auth.register.fields.surName' ) }}</label>
@@ -69,7 +69,6 @@
                                 @endif
                             </div>
                         </div>
-
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">{{ trans( 'auth.register.fields.email' ) }}</label>

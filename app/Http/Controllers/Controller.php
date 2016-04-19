@@ -21,6 +21,8 @@ class Controller extends BaseController
      */
     private $data = [];
 
+    private $breadCrumbs = [1,2,3];
+
     /**
      *
      * @var unknown
@@ -117,6 +119,10 @@ class Controller extends BaseController
      */
     protected function render()
     {
+        // add breadcrumbs
+        $this->set_data('breadCrumbs', $this->breadCrumbs );
+
+
         return view( $this->get_view(), $this->get_data() );
     }
 

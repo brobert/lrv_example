@@ -446,7 +446,7 @@
                 var isDemo          = false,
                     indicatorClass  = 'indicator',
                     toggler         = '[data-toggle~=panelrefresh]';
-
+debugger
                 // clicker
                 $(element).on('click', toggler, function (e) {
                     // find panel element
@@ -470,9 +470,8 @@
                                 indicator.removeClass('show');
                             }, 2000);
                         }
-
                         // publish event
-                        $(element).trigger(settings.eventPrefix+'.panelrefresh.refresh', { 'element': $(panel) });
+                        $(element).trigger(settings.eventPrefix+'.panelrefresh.refresh', { 'element': $(panel), cb: function() { indicator.removeClass('show') } });
                     } else {
                         $.error('There is no `indicator` element inside this panel.');
                     }

@@ -13119,10 +13119,16 @@ a.thumbnail.active {
 .page-header .page-header-section + .page-header-section {
   margin-top: 10px;
 }
+.page-header h4.title {
+  text-align: right;
+  margin-bottom: 5px;
+}
+
 .page-header .toolbar {
   text-align: left;
   margin-bottom: 5px;
 }
+
 .page-header .toolbar [class*=" col-"],
 .page-header .toolbar [class^="col-"] {
   padding-left: 0px;
@@ -13156,7 +13162,6 @@ a.thumbnail.active {
     margin-top: 0px;
   }
   .page-header .toolbar {
-    text-align: right;
     margin-bottom: 0px;
   }
   .page-header .toolbar .toolbar-label {
@@ -15112,10 +15117,10 @@ hr {
     background-color: #ffffff;
   }
   #header.navbar .navbar-header > .navbar-brand > .logo-figure {
-    background-image: url("../image/logo/logo-figure.png");
+    background-image: url("../image/logo/logo-figure-inverse.png");
   }
   #header.navbar .navbar-header > .navbar-brand > .logo-text {
-    background-image: url("../image/logo/logo-text.png");
+    background-image: url("../image/logo/logo-text-inverse.png");
   }
 }
 .sidebar {
