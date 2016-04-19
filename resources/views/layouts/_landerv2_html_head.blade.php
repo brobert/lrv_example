@@ -2,7 +2,7 @@
         <!-- START META SECTION -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{ $title or trans('main.title') }}</title>
+        <title>{{ $title or trans('app.title') }}</title>
         <meta name="author" content="optimisticdesigns">
         <meta name="description" content="Lander.v2 Admin is a clean and flat backend built with twitter bootstrap">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">

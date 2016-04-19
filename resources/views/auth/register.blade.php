@@ -24,6 +24,53 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group{{ $errors->has('secondName') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">{{ trans( 'auth.register.fields.secondName' ) }}</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="secondName" value="{{ old('secondName') }}">
+
+                                @if ($errors->has('secondName'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('secondName') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('surName') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">{{ trans( 'auth.register.fields.surName' ) }}</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="surName" value="{{ old('surName') }}">
+
+                                @if ($errors->has('surName'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('surName') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">{{ trans( 'auth.register.fields.type' ) }}</label>
+
+                            <div class="col-md-6">
+                                <select type="text" class="form-control" name="type">
+                                    <option value="parent" default>{{ trans( 'auth.register.label.type.parent' ) }}</option>
+                                    <option value="worker">{{ trans( 'auth.register.label.type.worker' ) }}</option>
+                                </select>
+
+                                @if ($errors->has('type'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('type') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">{{ trans( 'auth.register.fields.email' ) }}</label>
 

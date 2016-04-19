@@ -31,10 +31,19 @@ return [
         'form_title'    => 'Dodaj konto',
         'form_submit'   => 'Utwórz konto',
         'fields' => [
-            'name'                  => 'Imię i nazwisko',
+            'name'                  => 'Imię',
+            'secondName'            => 'Drugie imie',
+            'surName'               => 'Nazwisko',
+            'type'                  => 'Typ konta',
             'email'                 => 'E-mail',
             'password'              => 'Hasło',
             'password_confirmation' => 'Potwierdź hasło'
+        ],
+        'label' => [
+            'type' => [
+                'parent' => 'Opiekun',
+                'worker' => 'Pracownik'
+            ]
         ]
     ]
 

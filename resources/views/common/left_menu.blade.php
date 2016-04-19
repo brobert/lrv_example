@@ -3,7 +3,7 @@ $menu_items = [
     [
         'href' => '/events',
         'icon'  => 'ico-calendar',
-        'text'  => 'Wydarzenia'
+        'id'  => 'event'
     ],
 ];
 
@@ -21,7 +21,7 @@ $menu_items = [
     <li>
         <a href="{{ $menu_item['href'] or 'javascript:void(0);' }}" data-parent=".topmenu" data-toggle="submenu">
             <span class="figure"><i class="{{ $menu_item['icon'] }}"></i></span>
-            <span class="text">{{ $menu_item['text'] }}</span>
+            <span class="text">{{ trans( 'app.menu.' . $menu_item['id']) }}</span>
             @if ( isset( $menu_item['label']) )
                 <span class="number"><span class="label label-danger">{{$menu_item['label']}}</span></span>
             @endif
@@ -32,7 +32,7 @@ $menu_items = [
     <li >
         <a href="javascript:void(0);" data-toggle="submenu" data-target="#admin" data-parent=".topmenu">
             <span class="figure"><i class="ico-grid"></i></span>
-            <span class="text">Admin</span>
+            <span class="text">{{ trans( 'app.menu.admin' ) }}</span>
             <span class="arrow"></span>
         </a>
         <!-- START 2nd Level Menu -->
