@@ -117,13 +117,13 @@ class Controller extends BaseController
      * @method render
      * Controller
      */
-    protected function render()
+    protected function render( $view = null )
     {
         // add breadcrumbs
         $this->set_data('breadCrumbs', $this->breadCrumbs );
 
 
-        return view( $this->get_view(), $this->get_data() );
+        return view( isset($view) ? $view: $this->get_view(), $this->get_data() );
     }
 
 

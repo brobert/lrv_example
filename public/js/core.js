@@ -446,7 +446,7 @@
                 var isDemo          = false,
                     indicatorClass  = 'indicator',
                     toggler         = '[data-toggle~=panelrefresh]';
-debugger
+
                 // clicker
                 $(element).on('click', toggler, function (e) {
                     // find panel element

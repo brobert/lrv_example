@@ -43,6 +43,13 @@ $menu_items = [
                     <span class="text">Przedszkola</span>
                 </a>
             </li>
+
+            <li >
+                <a href="/register">
+                    <span class="text">Utwórz konto</span>
+                </a>
+            </li>
+
         </ul>
         <!--/ END 2nd Level Menu -->
     </li>

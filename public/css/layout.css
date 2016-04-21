@@ -378,11 +378,11 @@ html.frontend body {
   }
   #header.navbar .container .navbar-header.navbar-header-transparent > .navbar-brand > .logo-figure,
   #header.navbar .container-fluid .navbar-header.navbar-header-transparent > .navbar-brand > .logo-figure {
-    background-image: url("../image/logo/logo-figure-inverse.png");
+    background-image: url("../image/logo/logo-figure.png");
   }
   #header.navbar .container .navbar-header.navbar-header-transparent > .navbar-brand > .logo-text,
   #header.navbar .container-fluid .navbar-header.navbar-header-transparent > .navbar-brand > .logo-text {
-    background-image: url("../image/logo/logo-text-inverse.png");
+    background-image: url("../image/logo/logo-text.png");
   }
   #header.navbar .navbar-header {
     background-color: #00b6ad;

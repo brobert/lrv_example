@@ -46,7 +46,9 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->base = 'auth';
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest', ['only' => 'login']);
+
+//         $this->middleware('auth', ['except' => 'logout']);
     }
 
     /**
@@ -68,6 +70,11 @@ class AuthController extends Controller
 
     }
 
+    public function showRegistrationForm() {
+
+        $this->set_view('register');
+        return $this->render();
+    }
 
     /**
      * AuthController::logout()
@@ -79,49 +86,6 @@ class AuthController extends Controller
         return redirect( $this->redirectTo );
     }
 
-    /**
-     * AuthController::settings()
-     *
-     * @return
-     */
-    public function settings() {
-        $this->set_view('settings');
-        return $this->render();
-    }
-
-
-    /**
-     * AuthController::tree()
-     *
-     * @return
-     */
-    public function tree() {
-        return $this->_make_tree(10, 3);
-    }
-
-    /**
-     * AuthController::_make_tree()
-     *
-     * @param mixed $max_items
-     * @param mixed $deep
-     * @return
-     */
-    private function _make_tree( $max_items, $deep) {
-
-        $items_count = \rand(3, $max_items);
-
-        $result = [];
-
-        while ( $items_count !== 0 ) {
-            $item = [ 'id' => 1, 'name' => 'name_1'];
-            if ( $deep > 0 ) {
-                $item['children'] = $this->_make_tree($max_items, $deep - 1);
-            }
-            $result[] = $item;
-            $items_count--;
-        }
-        return $result;
-    }
     /**
      * Get a validator for an incoming registration request.
      *

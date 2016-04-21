@@ -34,9 +34,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', 'HomeController@index');
 
     Route::get('/worklog', 'WorklogController@index');
+    Route::get('/events', 'EventController@index');
 });
 
-Route::group(array('prefix' => 'res', 'middleware' => 'auth' ), function()
-{
+Route::group(array('prefix' => 'res', 'middleware' => 'auth' ), function() {
     Route::resource('worklog', 'Resources\WorklogController');
+
+
 });

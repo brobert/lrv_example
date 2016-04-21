@@ -15117,10 +15117,10 @@ hr {
     background-color: #ffffff;
   }
   #header.navbar .navbar-header > .navbar-brand > .logo-figure {
-    background-image: url("../image/logo/logo-figure-inverse.png");
+    background-image: url("../image/logo/logo-figure.png");
   }
   #header.navbar .navbar-header > .navbar-brand > .logo-text {
-    background-image: url("../image/logo/logo-text-inverse.png");
+    background-image: url("../image/logo/logo-text.png");
   }
 }
 .sidebar {
