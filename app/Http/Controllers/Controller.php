@@ -11,9 +11,13 @@ use Auth;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+Use App\Helpers\MenuHelper;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    use MenuHelper;
 
     /**
      * przechowuje dane dla widoku lub odpowiedzi
@@ -51,8 +55,11 @@ class Controller extends BaseController
     public function __construct() {
 
 //         parent::__construct();
+        if (  Auth::check() ) {
 
-        $this->set_data('user', Auth::user() );
+            $this->set_data('menu', $this->getMenu( Auth::user() ) );
+            $this->set_data('user', Auth::user() );
+        }
     }
 
 

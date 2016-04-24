@@ -45,6 +45,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->base = 'auth';
         $this->middleware('guest', ['only' => 'login']);
 
@@ -104,7 +105,7 @@ class AuthController extends Controller
             'name'          => 'required|alpha|max:255',
             'secondName'    => 'alpha|max:255',
             'surName'       => 'required|alpha|max:255',
-            'type'          => 'required|in:parent,worker',
+            'role'          => 'required|in:developer,admin,agency,parent',
             'email'         => 'required|email|max:255|unique:users',
             'password'      => 'required|confirmed|min:6',
         ]);
@@ -128,7 +129,7 @@ class AuthController extends Controller
             'name'          => $data['name'],
             'secondName'    => $data['secondName'],
             'surName'       => $data['surName'],
-            'type'          => $data['type'],
+            'role'          => $data['role'],
             'email'         => $data['email'],
             'password'      => bcrypt($data['password']),
         ]);

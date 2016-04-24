@@ -68,7 +68,7 @@
 
         <div class="col-md-10 col-md-offset-1">
             <pre>
-                {{ print_r( get_class_methods( $user ), true) }}
+                {{ print_r( $this_methods, true) }}
             </pre>
         </div>
 

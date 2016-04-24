@@ -26,7 +26,13 @@ class HomeController extends Controller {
     *
     * @return \Illuminate\Http\Response
     */
-    public function index() {
+    public function index( Request $request ) {
+
+        $debug_data = get_class_methods( $request );
+        \asort($debug_data);
+
+        $this->set_data('this_methods', $request->session() );
+
         $this->set_data( 'users', User::all() );
         $this->set_view('home');
         return $this->render('home');
