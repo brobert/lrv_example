@@ -12,9 +12,13 @@ trait MenuHelper {
     public function getMenu( User $user ) {
         return [
             [
-                'href' => '/events',
-                'icon'  => 'ico-calendar',
-                'id'  => 'event'
+                'target'    => 'messages-box',
+                'icon'      => 'ico-envelop3',
+                'id'        => 'message',
+                'children'  => [
+                    [],
+                    []
+                ]
             ],
             [
                 'href' => '/events',
@@ -22,9 +26,14 @@ trait MenuHelper {
                 'id'  => 'event'
             ],
             [
-                'href' => '/events',
+                'href' => '/trips',
                 'icon'  => 'ico-calendar',
-                'id'  => 'event'
+                'id'  => 'trip'
+            ],
+            [
+                'href' => '/payments',
+                'icon'  => 'ico-money',
+                'id'  => 'payment'
             ],
         ];
     }

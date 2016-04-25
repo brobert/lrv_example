@@ -1049,6 +1049,7 @@ input[type="checkbox"] {
 }
 /* Form horizontal - bordered  */
 .form-horizontal.form-bordered .form-group,
+.form.form-bordered .form-group,
 .form-horizontal.form-striped .form-group {
   padding-top: 15px;
   padding-bottom: 15px;
