@@ -35,6 +35,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/worklog', 'WorklogController@index');
     Route::get('/events', 'EventController@index');
+
+    Route::get( '/users', [ 'as' => 'users', 'uses' => 'UserController@user_list' ] );
 });
 
 Route::group(array('prefix' => 'res', 'middleware' => 'auth' ), function() {

@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'secondName', 'surName', 'role'
+        'name', 'email', 'password', 'secondName', 'surName', 'role', 'gender'
     ];
 
     /**
@@ -27,4 +27,6 @@ class User extends Authenticatable
     public function fullName() {
         return sprintf('%s %s', $this->name, $this->surName);
     }
+
+//     public $full_name = sprintf('%s %s', $this->name, $this->surName );
 }

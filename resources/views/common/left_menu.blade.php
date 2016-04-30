@@ -14,7 +14,7 @@
             <span class="arrow"></span>
         </a>
         <!-- START 2nd Level Menu -->
-        <ul id="admin" class="submenu">
+        <ul id="admin" class="submenu collapse">
             <li class="submenu-header ellipsis">Panel Administratora</li>
             <li >
                 <a href="/units">
@@ -23,8 +23,8 @@
             </li>
 
             <li >
-                <a href="/register">
-                    <span class="text">Utwórz konto</span>
+                <a href="/users">
+                    <span class="text">Konta</span>
                 </a>
             </li>
 

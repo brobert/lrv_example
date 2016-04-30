@@ -16,6 +16,8 @@ return [
     'failed'    => 'Login i hasło nie pasują',
     'throttle'  => 'Błędne logowania. Poczekaj :secods sekund na odblokowanie możliwości logowania.',
 
+    'my_profile'    => 'Moje konto',
+    'sign_out'  => 'Wyloguj',
     'login' => [
         'form_title'        => 'Logowanie',
         'form_submit'       => 'Zaloguj',
