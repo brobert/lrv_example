@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Helpers\AuthLoginHelper;
+use Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
+use Illuminate\Support\Facades\Input as Input;
+use App\Helpers\AuthHelper;
 
 class AuthController extends Controller
 {
@@ -21,7 +26,8 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins, AuthLoginHelper;
+
 
     /**
      * Where to redirect users after login / registration.
@@ -35,43 +41,76 @@ class AuthController extends Controller
      *
      * @return void
      */
+    /**
+     * AuthController::__construct()
+     *
+     * @return
+     */
     public function __construct()
     {
+        parent::__construct();
         $this->base = 'auth';
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest', ['only' => 'login']);
+
+//         $this->middleware('auth', ['except' => 'logout']);
     }
 
-    public function login() {}
+    /**
+     * AuthController::login()
+     *
+     * @return
+     */
+    public function login() {
 
-    public function logout() {
-        return redirect( $this->redirectTo );
+        $email      = Input::get( 'email' );
+        $password   = Input::get( 'password' );
+
+
+        $data = Input::only(['email', 'password']);
+
+        $validator = $this->login_validator($data);
+
+        if ( $validator->fails() ) {
+            return redirect('login')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+
+        $check_email = User::where('email', $email)
+                  ->exists();
+
+        if ( Auth::attempt( [ 'email' => $email, 'password' => $password ] ) ) {
+            return redirect()->action('HomeController@index')->with('message_success', trans( 'auth.ok' ) );
+        }
+        return redirect()
+            ->action( 'Auth\AuthController@showLoginForm' )
+            ->with( 'message_error', trans( 'auth.failed' ) );
+
     }
 
-    public function settings() {
-        $this->set_view('settings');
+    public function showRegistrationForm() {
+
+        $this->set_view('register');
         return $this->render();
     }
 
-    public function tree()
-    {
-        return $this->_make_tree(10, 3);
+    /**
+     * AuthController::logout()
+     *
+     * @return
+     */
+    public function logout() {
+        Auth::logout();
+        return redirect( $this->redirectTo );
     }
 
-    private function _make_tree( $max_items, $deep) {
+    protected function login_validator( array $data ) {
 
-        $items_count = \rand(3, $max_items);
-
-        $result = [];
-
-        while ( $items_count !== 0 ) {
-            $item = [ 'id' => 1, 'name' => 'name_1'];
-            if ( $deep > 0 ) {
-                $item['children'] = $this->_make_tree($max_items, $deep - 1);
-            }
-            $result[] = $item;
-            $items_count--;
-        }
-        return $result;
+        return Validator::make( $data, [
+            'email'     => 'required|email|exists:' . with(new User)->getTable(),
+            'password'  => 'required|min:6',
+        ]);
     }
     /**
      * Get a validator for an incoming registration request.
@@ -79,12 +118,21 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    /**
+     * AuthController::validator()
+     *
+     * @param mixed $data
+     * @return
+     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'name'          => 'required|alpha|max:255',
+            'secondName'    => 'alpha|max:255',
+            'surName'       => 'required|alpha|max:255',
+            'role'          => 'required|in:developer,admin,agency,parent',
+            'email'         => 'required|email|max:255|unique:users',
+            'password'      => 'required|confirmed|min:6',
         ]);
     }
 
@@ -94,12 +142,21 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
+    /**
+     * AuthController::create()
+     *
+     * @param mixed $data
+     * @return
+     */
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'name'          => $data['name'],
+            'secondName'    => $data['secondName'],
+            'surName'       => $data['surName'],
+            'role'          => $data['role'],
+            'email'         => $data['email'],
+            'password'      => bcrypt($data['password']),
         ]);
     }
 }

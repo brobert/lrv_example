@@ -26,6 +26,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        //
+        $gate->define('update-contact', function ($user, $contact) {
+            return $user->id === $contact->user_id;
+        });
     }
 }

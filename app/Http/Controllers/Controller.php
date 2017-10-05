@@ -7,11 +7,17 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
+use Auth;
+
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+Use App\Helpers\MenuHelper;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    use MenuHelper;
 
     /**
      * przechowuje dane dla widoku lub odpowiedzi
@@ -19,20 +25,76 @@ class Controller extends BaseController
      */
     private $data = [];
 
+    private $breadCrumbs = [1,2,3];
+
+    /**
+     *
+     * @var unknown
+     */
+    private $meta = [];
+
+    /**
+     *
+     * @var unknown
+     */
+    private $req_status = 0;
+
+    /**
+     *
+     * @var unknown
+     */
     private $view = false;
 
+    /**
+     *
+     * @var unknown
+     */
     protected $base = false;
 
+
+    public function __construct() {
+
+//         parent::__construct();
+        if (  Auth::check() ) {
+
+            $this->set_data('menu', $this->getMenu( Auth::user() ) );
+            $this->set_data('user', Auth::user() );
+
+        }
+    }
+
+
+    /**
+     *
+     * @method set_data
+     * Controller
+     * @param unknown $key
+     * @param unknown $value
+     */
     protected function set_data( $key, $value)
     {
         $this->data[ $key ] = $value;
     }
 
+
+    /**
+     *
+     * @method get_data
+     * Controller
+     */
     protected function get_data()
     {
         return $this->data;
     }
 
+
+    /**
+     *
+     * @method set_view
+     * Controller
+     * @param unknown $view_path
+     * @throws ModelNotFoundException
+     */
     protected function set_view( $view_path )
     {
         if ( $this->base )
@@ -41,18 +103,59 @@ class Controller extends BaseController
         }
 
         if ( ! view()->exists( $view_path ) ) {
-            throw ModelNotFoundException();
+            throw new \InvalidArgumentException('View not found: ' . $view_path );
         }
         $this->view = $view_path;
     }
 
+
+    /**
+     *
+     * @method get_view
+     * Controller
+     */
     protected function get_view()
     {
         return $this->view;
     }
 
-    protected function render()
+
+    /**
+     *
+     * @method render
+     * Controller
+     */
+    protected function render( $view = null )
     {
-        return view( $this->get_view(), $this->get_data() );
+        // add breadcrumbs
+        $this->set_data('breadCrumbs', $this->breadCrumbs );
+
+
+        return view( isset($view) ? $view: $this->get_view(), $this->get_data() );
+    }
+
+
+    protected function get_meta()
+    {
+        return $this->meta;
+    }
+
+
+    protected function get_req_status()
+    {
+        return $this->req_status;
+    }
+
+    /**
+     *
+     * @method renderJson
+     * Controller
+     */
+    protected function renderJson() {
+        return response()->json([
+            'data'      => $this->get_data(),
+            'meta'      => $this->get_meta(),
+            'status'    => $this->get_req_status()
+        ]);
     }
 }

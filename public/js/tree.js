@@ -21,5 +21,11 @@
     }
     $.get('/auth/tree', {}, drawTree );
     console.info( window.location );
+    
+    $('html').on('fa.panelrefresh.refresh', function($panel, cb) {
+        debugger;
+        console.info('Panel refreshed', $panel);
+//        if ( cb ) cb.call(this);
+    })
 }
 ))

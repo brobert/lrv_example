@@ -6,10 +6,6 @@
 
 @section('content')
                 <div class="title">Laravel 5</div>
-                <a href="/tree">tree</a>
-                <a href="/tree">tree</a>
-                <a href="/tree">tree</a>
-                <a href="/tree">tree</a>
-                <a href="/tree">tree</a>
+                <a href="/tree">tree.................</a>
 @endsection
 
