@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Helpers\AuthLoginHelper;
 use Auth;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -24,7 +25,8 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+//     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthLoginHelper;
 
     /**
      * Where to redirect users after login / registration.
@@ -61,6 +63,8 @@ class AuthController extends Controller
 
         $email      = Input::get( 'email' );
         $password   = Input::get( 'password' );
+
+        // check if email exist in db
 
         if ( Auth::attempt( [ 'email' => $email, 'password' => $password ] ) ) {
             return redirect()->action('HomeController@index')->with('message_error', trans( 'auth.ok' ) );

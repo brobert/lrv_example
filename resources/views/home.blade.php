@@ -57,20 +57,20 @@
             </div>
         </div>
     </div>
-<!--     <div class="row"> -->
-<!--         <div class="col-md-10 col-md-offset-1"> -->
-<!--             <pre> -->
-<!--                 {{ print_r( $user, true) }} -->
-<!--             </pre> -->
-<!--         </div> -->
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <pre>
+                {{ print_r( $user, true) }}
+            </pre>
+        </div>
 
-<!--         <div class="col-md-10 col-md-offset-1"> -->
-<!--             <pre> -->
-<!--                 {{ print_r( $this_methods, true) }} -->
-<!--             </pre> -->
-<!--         </div> -->
+        <div class="col-md-10 col-md-offset-1">
+            <pre>
+                {{ print_r( $this_methods, true) }}
+            </pre>
+        </div>
 
 
-<!--     </div> -->
+    </div>
 </div>
 @endsection
