@@ -19,6 +19,7 @@ class HomeController extends Controller {
 
         parent::__construct();
         $this->middleware('auth');
+
     }
 
     /**
@@ -33,7 +34,6 @@ class HomeController extends Controller {
 
         $this->set_data('this_methods', $request->session() );
 
-        $this->set_data( 'users', User::all() );
         $this->set_view('home');
         return $this->render('home');
     }

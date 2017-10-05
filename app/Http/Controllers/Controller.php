@@ -59,6 +59,7 @@ class Controller extends BaseController
 
             $this->set_data('menu', $this->getMenu( Auth::user() ) );
             $this->set_data('user', Auth::user() );
+
         }
     }
 
@@ -102,7 +103,7 @@ class Controller extends BaseController
         }
 
         if ( ! view()->exists( $view_path ) ) {
-            throw new \InvalidArgumentException('View not found');
+            throw new \InvalidArgumentException('View not found: ' . $view_path );
         }
         $this->view = $view_path;
     }
